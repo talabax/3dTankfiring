@@ -99,8 +99,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0996819, y: 1.654446, z: 1.081721}
+  m_Center: {x: 0.0025405884, y: 0.327223, z: -0.0017052293}
 --- !u!54 &4043424829647337343
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435f0ed78c690ef4f9124a87d0cc5e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 200
+  playerHealth: 300
   playerArmor: 100
   firePower: 100
 --- !u!114 &3108030938906323827
@@ -144,8 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38fc037ec4013a43940f715e8670fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  projectileSpawnPoint: {fileID: 0}
+  projectile: {fileID: 2094170424311833644, guid: 72b5431347d19da4b8c05a0b4f345f9d,
+    type: 3}
+  projectileSpawnPoint: {fileID: 4043424830352639792}
   isPlayer1: 0
 --- !u!1 &4043424830352639792
 GameObject:

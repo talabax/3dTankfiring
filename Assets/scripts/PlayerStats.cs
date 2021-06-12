@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] int playerHealth = 200;
+    [SerializeField] int playerHealth = 2000;
     [SerializeField] int playerArmor= 100;
     [SerializeField] int firePower = 100;
     CombatContoller combatContoller;
+    UIController uiAccess;
 
 
     void Awake()
     {
         combatContoller = FindObjectOfType<CombatContoller>();
-        
+        uiAccess = FindObjectOfType<UIController>();
+    }
+
+
+    private void Start()
+    {
+        //Debug.Log("here it is !!!!!!!!!!! " +uiAccess.GetPlayer1FirePower());
     }
 
 
@@ -21,23 +28,48 @@ public class PlayerStats : MonoBehaviour
     {
         if (other.gameObject.tag == "projectile2")
         {
-            Debug.Log(other + " just hit us ! Trigger check1111111111111111");
-            //combatContoller.DealDamage();
-            Destroy(other.gameObject);
+            var bullet2 = gameObject.GetComponentInParent<PlayerStats>();
+            
+            //Debug.Log(other + " projectile 2 hit player 1");
+            
+            SetPlayerhealth( combatContoller.DealDamageTest(bullet2.GetFirepower(), Playerhealth())  );
+            Debug.Log(Playerhealth());
+            uiAccess.UpdateHealth();
+            Destroy(other.gameObject, .06f);
 
         }
         else if (other.gameObject.tag == "projectile1")
         {
-            Debug.Log(other + " just hit us ! Trigger check 22222222222222222222");
-            //combatContoller.DealDamage();
-            Destroy(other.gameObject);
+            var bullet1 = gameObject.GetComponentInParent<PlayerStats>();
+            
+            //Debug.Log(other.gameObject.GetComponentInParent<PlayerStats>().GetFirepower());
+            
+            Debug.Log(other + " projectile 1 hit player 2");
+            SetPlayerhealth(combatContoller.DealDamageTest(bullet1.GetFirepower(), Playerhealth()));
+            uiAccess.UpdateHealth();
+            Destroy(other.gameObject, .06f);
 
         }
 
     }
 
+    public int Playerhealth()
+    {
+        return playerHealth;
 
+    }
 
+    public void SetPlayerhealth(int health)
+    {
+       playerHealth = health;
+       
+    }
+
+    public int GetFirepower()
+    {
+        return firePower;
+
+    }
 
 
 }

@@ -10,7 +10,7 @@ public class Wall : MonoBehaviour
     {
         if(other.gameObject.tag == "projectile1" || other.gameObject.tag == "projectile2" )
         {
-            Debug.Log(other + " is here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            //Debug.Log(other + " is here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             Destroy(other.gameObject);
             
         }

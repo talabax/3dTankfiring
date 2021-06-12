@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class CombatContoller : MonoBehaviour
 {
-    [SerializeField] GameObject player1;
-    [SerializeField] GameObject Player2;
+    //[SerializeField] GameObject player1;
+    //[SerializeField] GameObject Player2;
+    //UIController UIAccess;
     private void Awake()
     {
-        
+       // UIAccess = FindObjectOfType<UIController>();  
     }
     // Start is called before the first frame update
 
 
-    /*public int DealDamage(int firepower, int health)
+    public int DealDamageTest( int firePower, int health)
     {
-        health = health - firepower * 2;
-        Debug.Log("you were hit");
+        health = health - firePower * 2;
+        
+
         return health;
     }
-    */
+
 
     public void DealDamage()
     {

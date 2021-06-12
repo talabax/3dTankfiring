@@ -9,6 +9,7 @@ public class Player2MOvement : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] GameObject projectileSpawnPoint;
     GameObject ball;
+    [SerializeField] GameObject parent;
     [SerializeField] bool isPlayer1;
     bool loadTimeStart = false;
 
@@ -36,12 +37,12 @@ public class Player2MOvement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.I))
             {
-                rb.velocity = transform.forward * Time.deltaTime * 5000;
+                rb.velocity = transform.forward * Time.fixedDeltaTime * 500;
 
             }
             if (Input.GetKey(KeyCode.K))
             {
-                rb.velocity = transform.forward * Time.deltaTime * -5000;
+                rb.velocity = transform.forward * Time.fixedDeltaTime * -500;
 
             }
 
@@ -61,11 +62,11 @@ public class Player2MOvement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.J))
             {
-                transform.Rotate(0, -200 * Time.deltaTime, 0);
+                transform.Rotate(0, -15 * Time.fixedDeltaTime, 0);
             }
             else if (Input.GetKey(KeyCode.L))
             {
-                transform.Rotate(0, 200 * Time.deltaTime, 0);
+                transform.Rotate(0, 15 * Time.fixedDeltaTime, 0);
             }
 
 
@@ -83,6 +84,7 @@ public class Player2MOvement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             ball = Instantiate(projectile, projectileSpawnPoint.transform.position, transform.rotation);
+ 
 
             Destroy(ball, 2f);
 

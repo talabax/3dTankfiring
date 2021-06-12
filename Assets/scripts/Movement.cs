@@ -6,11 +6,13 @@ public class Movement : MonoBehaviour
 {
     Rigidbody rb;
     
-    [SerializeField] GameObject projectile;
+    [SerializeField] GameObject projectile , par;
     [SerializeField] GameObject projectileSpawnPoint;
     GameObject ball;
-    [SerializeField] bool isPlayer1;
+    [SerializeField] GameObject parent;
+
     bool loadTimeStart = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +38,12 @@ public class Movement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                rb.velocity = transform.forward * Time.deltaTime * 5000;
+                rb.velocity = transform.forward * Time.fixedDeltaTime * 500;
 
             }
             if (Input.GetKey(KeyCode.S))
             {
-                rb.velocity = transform.forward * Time.deltaTime * -5000;
+                rb.velocity = transform.forward * Time.fixedDeltaTime * -500;
 
             }
 
@@ -61,11 +63,11 @@ public class Movement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.A))
             {
-                transform.Rotate(0, -200 * Time.deltaTime, 0);
+                transform.Rotate(0, -15 * Time.fixedDeltaTime, 0);
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                transform.Rotate(0, 200 * Time.deltaTime, 0);
+                transform.Rotate(0, 15 * Time.fixedDeltaTime, 0);
             }
 
 
@@ -83,7 +85,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
            ball = Instantiate(projectile, projectileSpawnPoint.transform.position, transform.rotation);
-           
+            ball.transform.SetParent(gameObject.transform);
            Destroy(ball, 2f);
 
         }
@@ -92,7 +94,7 @@ public class Movement : MonoBehaviour
 
     IEnumerator loadTime()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         loadTimeStart = true;
 
     }
