@@ -130,8 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 300
-  playerArmor: 100
   firePower: 100
+  fireRate: 1
 --- !u!114 &3108030938906323827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +147,7 @@ MonoBehaviour:
   projectile: {fileID: 2094170424311833644, guid: 72b5431347d19da4b8c05a0b4f345f9d,
     type: 3}
   projectileSpawnPoint: {fileID: 4043424830352639792}
+  parent: {fileID: 4043424829647337337}
   isPlayer1: 0
 --- !u!1 &4043424830352639792
 GameObject:

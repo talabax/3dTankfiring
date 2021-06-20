@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 719b305e18218ce4ca0710180b52d794, type: 2}
+  - {fileID: 2100000, guid: d8acedb5e8d4e6245b612536991f6f58, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,8 +99,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0737705, y: 1.6200591, z: 1.0323743}
-  m_Center: {x: -0.010189056, y: 0.31002957, z: -0.0007827878}
+  m_Size: {x: 1.0737705, y: 1.7035031, z: 1.0323743}
+  m_Center: {x: -0.010189056, y: 0.35175157, z: -0.0007827878}
 --- !u!114 &4043424829647337336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,8 +115,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 2094170424311833644, guid: e4a5dde84cf46494085990c888646e5e,
     type: 3}
+  par: {fileID: 4043424829647337337}
   projectileSpawnPoint: {fileID: 4043424830352639792}
-  isPlayer1: 1
+  parent: {fileID: 4043424829647337337}
+  playerStats1: {fileID: 0}
 --- !u!54 &4043424829647337343
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,9 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435f0ed78c690ef4f9124a87d0cc5e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 200
-  playerArmor: 100
+  playerHealth: 1200
   firePower: 100
+  fireRate: 1
 --- !u!1 &4043424830352639792
 GameObject:
   m_ObjectHideFlags: 0

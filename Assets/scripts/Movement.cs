@@ -10,22 +10,33 @@ public class Movement : MonoBehaviour
     [SerializeField] GameObject projectileSpawnPoint;
     GameObject ball;
     [SerializeField] GameObject parent;
-
-    bool loadTimeStart = false;
+    CombatContoller combatController;
+    PlayerStats playerStats1;
     
+    bool loadTimeStart = false;
+    bool fired = true; 
 
     // Start is called before the first frame update
     void Start()
     {
+        playerStats1 = GetComponent<PlayerStats>();
+       
+
+        //combatController = FindObjectOfType<CombatContoller>();
         rb = GetComponent<Rigidbody>();
         StartCoroutine(loadTime());
     }
 
+
+    private void FixedUpdate()
+    {
+        Rotate();
+    }
     // Update is called once per frame
     void Update()
     {
         MoveForward();
-        Rotate();
+        
         Fire();
        
     }
@@ -49,11 +60,6 @@ public class Movement : MonoBehaviour
 
         }
 
-
-
-
-
-
     }
 
     void Rotate()
@@ -63,11 +69,11 @@ public class Movement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.A))
             {
-                transform.Rotate(0, -15 * Time.fixedDeltaTime, 0);
+                transform.Rotate(0, -100f * Time.fixedDeltaTime, 0);
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                transform.Rotate(0, 15 * Time.fixedDeltaTime, 0);
+                transform.Rotate(0, 100f * Time.fixedDeltaTime, 0);
             }
 
 
@@ -82,12 +88,18 @@ public class Movement : MonoBehaviour
 
     void Fire()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (fired)
         {
-           ball = Instantiate(projectile, projectileSpawnPoint.transform.position, transform.rotation);
-            ball.transform.SetParent(gameObject.transform);
-           Destroy(ball, 2f);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                fired = false;
+                ball = Instantiate(projectile, projectileSpawnPoint.transform.position, transform.rotation);
+                
+                StartCoroutine(FireTime(playerStats1.GetFireRate()));
+                
+                Destroy(ball, 2f);
 
+            }
         }
     }
 
@@ -99,7 +111,12 @@ public class Movement : MonoBehaviour
 
     }
 
+    IEnumerator FireTime(float fireRate1)
+    {
+        yield return new WaitForSeconds(fireRate1);
+        fired = true;
 
+    }
 
 
 }

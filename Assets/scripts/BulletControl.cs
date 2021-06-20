@@ -14,8 +14,8 @@ public class BulletControl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        rb.velocity =  transform.forward * 20000 * Time.deltaTime;
+        rb.velocity =  transform.forward * 2000 * Time.deltaTime;
     }
 }

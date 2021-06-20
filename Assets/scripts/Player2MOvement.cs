@@ -12,19 +12,27 @@ public class Player2MOvement : MonoBehaviour
     [SerializeField] GameObject parent;
     [SerializeField] bool isPlayer1;
     bool loadTimeStart = false;
+    bool fired = true;
+    PlayerStats playerStats2;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerStats2 = GetComponent<PlayerStats>();
+
         rb = GetComponent<Rigidbody>();
         StartCoroutine(loadTime());
     }
 
-    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        Rotate();
+    }
+
     void Update()
     {
         MoveForward();
-        Rotate();
+        
         Fire();
 
     }
@@ -62,11 +70,11 @@ public class Player2MOvement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.J))
             {
-                transform.Rotate(0, -15 * Time.fixedDeltaTime, 0);
+                transform.Rotate(0, -100f * Time.fixedDeltaTime, 0);
             }
             else if (Input.GetKey(KeyCode.L))
             {
-                transform.Rotate(0, 15 * Time.fixedDeltaTime, 0);
+                transform.Rotate(0, 100f * Time.fixedDeltaTime, 0);
             }
 
 
@@ -81,13 +89,18 @@ public class Player2MOvement : MonoBehaviour
 
     void Fire()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (fired)
         {
-            ball = Instantiate(projectile, projectileSpawnPoint.transform.position, transform.rotation);
- 
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                fired = false;
+                ball = Instantiate(projectile, projectileSpawnPoint.transform.position, transform.rotation);
+                
+                StartCoroutine(FireTime(playerStats2.GetFireRate()));
 
-            Destroy(ball, 2f);
+                Destroy(ball, 2f);
 
+            }
         }
     }
 
@@ -96,6 +109,13 @@ public class Player2MOvement : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         loadTimeStart = true;
+
+    }
+
+    IEnumerator FireTime(float fireRate2)
+    {
+        yield return new WaitForSeconds(fireRate2);
+        fired = true;
 
     }
 }
