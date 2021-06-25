@@ -21,7 +21,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        //Debug.Log("here it is !!!!!!!!!!! " +uiAccess.GetPlayer1FirePower());
+        
     }
 
 

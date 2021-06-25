@@ -11,6 +11,7 @@ TagManager:
   - mine
   - projectile2
   - projectile1
+  - persist
   layers:
   - Default
   - TransparentFX
