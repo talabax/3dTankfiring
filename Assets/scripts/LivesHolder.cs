@@ -13,8 +13,8 @@ public class LivesHolder : MonoBehaviour
 
     }
 
-    static int lives = 1;
-    static int lives2 = 1;
+    static int lives = 3;
+    static int lives2 = 3;
 
     private void Awake()
     {

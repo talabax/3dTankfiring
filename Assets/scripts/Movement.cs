@@ -12,13 +12,16 @@ public class Movement : MonoBehaviour
     [SerializeField] GameObject parent;
     CombatContoller combatController;
     PlayerStats playerStats1;
-    
+    MusicMain music;
+
+
     bool loadTimeStart = false;
     bool fired = true; 
 
     // Start is called before the first frame update
     void Start()
     {
+        music = FindObjectOfType<MusicMain>();
         playerStats1 = GetComponent<PlayerStats>();
        
 
@@ -94,7 +97,7 @@ public class Movement : MonoBehaviour
             {
                 fired = false;
                 ball = Instantiate(projectile, projectileSpawnPoint.transform.position, transform.rotation);
-                
+                music.FiredShot(music.RandomFire()) ;
                 StartCoroutine(FireTime(playerStats1.GetFireRate()));
                 
                 Destroy(ball, 2f);

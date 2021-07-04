@@ -57,11 +57,13 @@ public class Scoretracker : MonoBehaviour
                 {
                     player1Lives = LivesHolder.Lifelower();
                     player1LifeText.text = player1Lives.ToString();
+                    
                     sceneController.RestartGame();
                     Debug.Log(player1Lives);
                 }
                 else if (player1Lives <= 0)
                 {
+                    
                     Debug.Log("Game Over");
                     sceneController.Menu();
 
@@ -102,21 +104,19 @@ public class Scoretracker : MonoBehaviour
             }
         }
 
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    IEnumerator WaitTime()
+    {
+        yield return new WaitForSeconds(1.5f);
+        
 
     }
+
+
+
+
+
 
 
 }

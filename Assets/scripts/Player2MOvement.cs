@@ -15,11 +15,13 @@ public class Player2MOvement : MonoBehaviour
     bool fired = true;
     PlayerStats playerStats2;
 
+    MusicMain music;
+
     // Start is called before the first frame update
     void Start()
     {
         playerStats2 = GetComponent<PlayerStats>();
-
+        music = FindObjectOfType<MusicMain>();
         rb = GetComponent<Rigidbody>();
         StartCoroutine(loadTime());
     }
@@ -95,7 +97,7 @@ public class Player2MOvement : MonoBehaviour
             {
                 fired = false;
                 ball = Instantiate(projectile, projectileSpawnPoint.transform.position, transform.rotation);
-                
+                music.FiredShot(music.RandomFire());
                 StartCoroutine(FireTime(playerStats2.GetFireRate()));
 
                 Destroy(ball, 2f);
