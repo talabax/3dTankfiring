@@ -45,14 +45,15 @@ public class Player2MOvement : MonoBehaviour
 
         if (loadTimeStart)
         {
+            //500
             if (Input.GetKey(KeyCode.I))
             {
-                rb.velocity = transform.forward * Time.fixedDeltaTime * 500;
+                rb.velocity = transform.forward * Time.fixedDeltaTime * 700;
 
             }
             if (Input.GetKey(KeyCode.K))
             {
-                rb.velocity = transform.forward * Time.fixedDeltaTime * -500;
+                rb.velocity = transform.forward * Time.fixedDeltaTime * -700;
 
             }
 

@@ -65,7 +65,8 @@ public class Scoretracker : MonoBehaviour
                 {
                     
                     Debug.Log("Game Over");
-                    sceneController.Menu();
+                    //sceneController.Menu();
+                    sceneController.PlayerTwoWin();
 
                 }
 
@@ -96,7 +97,8 @@ public class Scoretracker : MonoBehaviour
                 else if (player2Lives <= 0)
                 {
                     Debug.Log("Game Over");
-                    sceneController.Menu();
+                    //sceneController.Menu();
+                    sceneController.PlayerOneWin();
 
                 }
 

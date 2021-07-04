@@ -52,12 +52,12 @@ public class Movement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                rb.velocity = transform.forward * Time.fixedDeltaTime * 500;
+                rb.velocity = transform.forward * Time.fixedDeltaTime * 400;
 
             }
             if (Input.GetKey(KeyCode.S))
             {
-                rb.velocity = transform.forward * Time.fixedDeltaTime * -500;
+                rb.velocity = transform.forward * Time.fixedDeltaTime * -400;
 
             }
 
